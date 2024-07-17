@@ -1,23 +1,40 @@
-# ![RealWorld Example App](logo.png)
+# Welcome to Remix!
 
-> ### [YOUR_FRAMEWORK] codebase containing real world examples (CRUD, auth, advanced patterns, etc) that adheres to the [RealWorld](https://github.com/gothinkster/realworld) spec and API.
+- 📖 [Remix docs](https://remix.run/docs)
 
+## Development
 
-### [Demo](https://demo.realworld.io/)&nbsp;&nbsp;&nbsp;&nbsp;[RealWorld](https://github.com/gothinkster/realworld)
+Run the dev server:
 
+```shellscript
+npm run dev
+```
 
-This codebase was created to demonstrate a fully fledged fullstack application built with **[YOUR_FRAMEWORK]** including CRUD operations, authentication, routing, pagination, and more.
+## Deployment
 
-We've gone to great lengths to adhere to the **[YOUR_FRAMEWORK]** community styleguides & best practices.
+First, build your app for production:
 
-For more information on how to this works with other frontends/backends, head over to the [RealWorld](https://github.com/gothinkster/realworld) repo.
+```sh
+npm run build
+```
 
+Then run the app in production mode:
 
-# How it works
+```sh
+npm start
+```
 
-> Describe the general architecture of your app here
+Now you'll need to pick a host to deploy it to.
 
-# Getting started
+### DIY
 
-> npm install, npm start, etc.
+If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
 
+Make sure to deploy the output of `npm run build`
+
+- `build/server`
+- `build/client`
+
+## Styling
+
+This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
