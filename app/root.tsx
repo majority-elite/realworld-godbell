@@ -1,13 +1,19 @@
 import {
+  json,
   Links,
+  LiveReload,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from '@remix-run/react';
-import './tailwind.css';
+import { AppHeader } from './components/AppHeader';
+import { LoaderFunction } from '@remix-run/node';
+import { getUser } from './tools/auth';
+import { UserProvider } from './components/UserData';
 
-export function Layout({ children }: { children: React.ReactNode }) {
+export const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
       <head>
@@ -28,14 +34,26 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+        <LiveReload></LiveReload>
+        <AppHeader></AppHeader>
         {children}
         <ScrollRestoration />
         <Scripts />
       </body>
     </html>
   );
-}
+};
 
 export default function App() {
-  return <Outlet />;
+  const data = useLoaderData<typeof loader>();
+
+  return (
+    <UserProvider user={data.user}>
+      <Outlet />
+    </UserProvider>
+  );
 }
+
+export const loader: LoaderFunction = async () => {
+  return json({ user: getUser() });
+};
